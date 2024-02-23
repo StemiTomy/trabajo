@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>
+            {% block title %}
+            
+            {% endblock %}
+        </title>
+    </head>
+    <body>
+        <h1>Titulo</h1>
+        {% include "superior/barra.html" %}
+        <h3>Cursos de informática</h3>
+        {% block content %}
+        
+        {% endblock %}
+        <p>Pie de página</p>
+    </body>
+</html>

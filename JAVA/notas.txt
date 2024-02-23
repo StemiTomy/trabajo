@@ -1,0 +1,9 @@
+1. Pasar diagrama de clases en Java a UML. Representación gráfica.
+2. Persistencia de esos datos.
+3. Usar librería Swing para representar esos datos al usuario.
+4. ?
+
+
+-  Notas, lógica hecha en Tomcat + Java, la consume la APP mobile de Python
+
+- Trabajo: Leer manul de emails, programa ORBER. Tema_1_Entradas_Email.pdf

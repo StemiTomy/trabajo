@@ -1,0 +1,1 @@
+```npx create-expo-app``` (para crear la app, expo)
