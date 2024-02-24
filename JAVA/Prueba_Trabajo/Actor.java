@@ -1,16 +1,21 @@
 package JAVA.Prueba_Trabajo;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Actor {
     private int id;
     private String nombreActor;
-    private Personaje[] personajes;
+    private ArrayList<Personaje> personajes;
 
-    public Actor(int id, String nombreActor, Personaje[] personajes) {
-        this.id = id;
-        this.nombreActor = nombreActor;
-        this.personajes = personajes;
+    public Actor(int id, String nombreActor, ArrayList<Personaje> personajes) {
+        this.setId(id);
+        this.setNombreActor(nombreActor);
+        this.setPersonajes(personajes);
+    }
+
+    public Actor(int id, String nombreActor) {
+        this.setId(id);
+        this.setNombreActor(nombreActor);
     }
 
     public int getId() {
@@ -29,17 +34,17 @@ public class Actor {
         this.nombreActor = nombreActor;
     }
 
-    public Personaje[] getPersonajes() {
+    public ArrayList<Personaje> getPersonajes() {
         return personajes;
     }
 
-    public void setPersonajes(Personaje[] personajes) {
+    public void setPersonajes(ArrayList<Personaje> personajes) {
         this.personajes = personajes;
     }
 
     @Override
     public String toString() {
-        return "Actor [id=" + id + ", nombreActor=" + nombreActor + ", personajes=" + Arrays.toString(personajes) + "]";
+        return "Actor [id=" + id + ", nombreActor=" + nombreActor + ", personajes=" + personajes + "]";
     }
 
 }

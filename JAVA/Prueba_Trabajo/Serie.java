@@ -13,16 +13,16 @@ public class Serie {
     private ArrayList<Personaje> personajes;
     private ArrayList<Actor> actores;
     
-    public Serie(int id, String titulo, int anoInicio, String sinopsis, String[] generos, Temporada temporada,
-            Personaje[] personajes, Actor[] actores) {
-        this.id = id;
-        this.titulo = titulo;
-        this.anoInicio = anoInicio;
-        this.sinopsis = sinopsis;
-        this.generos = generos;
-        temporadas.add(temporada);
-        this.personajes = personajes;
-        this.actores = actores;
+    public Serie(int id, String titulo, int anoInicio, String sinopsis, String[] generos, ArrayList<Temporada> temporadas,
+            ArrayList<Personaje> personajes, ArrayList<Actor> actores) {
+        this.setId(id);
+        this.setTitulo(titulo);
+        this.setAnoInicio(anoInicio);
+        this.setSinopsis(sinopsis);
+        this.setGeneros(generos);
+        this.setTemporadas(temporadas);
+        this.setPersonajes(personajes);
+        this.setActores(actores);
     }
 
     public int getId() {
@@ -65,35 +65,37 @@ public class Serie {
         this.generos = generos;
     }
 
-    public Temporada[] getTemporadas() {
+    public ArrayList<Temporada> getTemporadas() {
         return temporadas;
     }
 
-    public void setTemporadas(Temporada[] temporadas) {
+    public void setTemporadas(ArrayList<Temporada> temporadas) {
         this.temporadas = temporadas;
     }
 
-    public Personaje[] getPersonajes() {
+    public ArrayList<Personaje> getPersonajes() {
         return personajes;
     }
 
-    public void setPersonajes(Personaje[] personajes) {
+    public void setPersonajes(ArrayList<Personaje> personajes) {
         this.personajes = personajes;
     }
 
-    public Actor[] getActores() {
+    public ArrayList<Actor> getActores() {
         return actores;
     }
 
-    public void setActores(Actor[] actores) {
+    public void setActores(ArrayList<Actor> actores) {
         this.actores = actores;
     }
 
     @Override
     public String toString() {
         return "Serie [id=" + id + ", titulo=" + titulo + ", anoInicio=" + anoInicio + ", sinopsis=" + sinopsis
-                + ", generos=" + Arrays.toString(generos) + ", temporadas=" + Arrays.toString(temporadas)
-                + ", personajes=" + Arrays.toString(personajes) + ", actores=" + Arrays.toString(actores) + "]";
+                + ", generos=" + Arrays.toString(generos) + ", temporadas=" + temporadas + ", personajes=" + personajes
+                + ", actores=" + actores + "]";
     }
+
+    
 
 }

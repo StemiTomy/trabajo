@@ -1,22 +1,22 @@
 package JAVA.Prueba_Trabajo;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Capitulo {
     private int id;
     private String titulo;
     private int duracionMins;
     private String sinopsis;
-    private Personaje[] personajes;
-    private Actor[] actores;
+    private ArrayList<Personaje> personajes;
+    private ArrayList<Actor> actores;
 
-    public Capitulo(int id, String titulo, int duracionMins, String sinopsis, Personaje[] personajes, Actor[] actores) {
-        this.id = id;
-        this.titulo = titulo;
-        this.duracionMins = duracionMins;
-        this.sinopsis = sinopsis;
-        this.personajes = personajes;
-        this.actores = actores;
+    public Capitulo(int id, String titulo, int duracionMins, String sinopsis, ArrayList<Personaje> personajes, ArrayList<Actor> actores) {
+        this.setId(id);
+        this.setTitulo(titulo);
+        this.setDuracionMins(duracionMins);
+        this.setSinopsis(sinopsis);
+        this.setPersonajes(personajes);
+        this.setActores(actores);
     }
 
     public int getId() {
@@ -51,26 +51,26 @@ public class Capitulo {
         this.sinopsis = sinopsis;
     }
 
-    public Personaje[] getPersonajes() {
+    public ArrayList<Personaje> getPersonajes() {
         return personajes;
     }
 
-    public void setPersonajes(Personaje[] personajes) {
+    public void setPersonajes(ArrayList<Personaje> personajes) {
         this.personajes = personajes;
     }
 
-    public Actor[] getActores() {
+    public ArrayList<Actor> getActores() {
         return actores;
     }
 
-    public void setActores(Actor[] actores) {
+    public void setActores(ArrayList<Actor> actores) {
         this.actores = actores;
     }
 
     @Override
     public String toString() {
         return "Capitulo [id=" + id + ", titulo=" + titulo + ", duracionMins=" + duracionMins + ", sinopsis=" + sinopsis
-                + ", personajes=" + Arrays.toString(personajes) + ", actores=" + Arrays.toString(actores) + "]";
+                + ", personajes=" + personajes + ", actores=" + actores + "]";
     }
 
 }

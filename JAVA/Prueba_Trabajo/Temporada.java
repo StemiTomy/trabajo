@@ -1,23 +1,23 @@
 package JAVA.Prueba_Trabajo;
 import java.sql.Date; // suponemos que usaremos JDBC
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Temporada {
     private int id;
     private Date fechaProduccion;
     private Date fechaEstrenoMundial;
-    private Capitulo[] capitulos;
-    private Personaje[] personajes;
-    private Actor[] actores;
+    private ArrayList<Capitulo> capitulos;
+    private ArrayList<Personaje> personajes;
+    private ArrayList<Actor> actores;
     
-    public Temporada(int id, Date fechaProduccion, Date fechaEstrenoMundial, Capitulo[] capitulos,
-            Personaje[] personajes, Actor[] actores) {
-        this.id = id;
-        this.fechaProduccion = fechaProduccion;
-        this.fechaEstrenoMundial = fechaEstrenoMundial;
-        this.capitulos = capitulos;
-        this.personajes = personajes;
-        this.actores = actores;
+    public Temporada(int id, Date fechaProduccion, Date fechaEstrenoMundial, ArrayList<Capitulo> capitulos,
+            ArrayList<Personaje> personajes, ArrayList<Actor> actores) {
+        this.setId(id);
+        this.setFechaProduccion(fechaProduccion);
+        this.setFechaEstrenoMundial(fechaEstrenoMundial);
+        this.setCapitulos(capitulos);
+        this.setPersonajes(personajes);
+        this.setActores(actores);
     }
 
     public int getId() {
@@ -44,35 +44,35 @@ public class Temporada {
         this.fechaEstrenoMundial = fechaEstrenoMundial;
     }
 
-    public Capitulo[] getCapitulos() {
+    public ArrayList<Capitulo> getCapitulos() {
         return capitulos;
     }
 
-    public void setCapitulos(Capitulo[] capitulos) {
+    public void setCapitulos(ArrayList<Capitulo> capitulos) {
         this.capitulos = capitulos;
     }
 
-    public Personaje[] getPersonajes() {
+    public ArrayList<Personaje> getPersonajes() {
         return personajes;
     }
 
-    public void setPersonajes(Personaje[] personajes) {
+    public void setPersonajes(ArrayList<Personaje> personajes) {
         this.personajes = personajes;
     }
 
-    public Actor[] getActores() {
+    public ArrayList<Actor> getActores() {
         return actores;
     }
 
-    public void setActores(Actor[] actores) {
+    public void setActores(ArrayList<Actor> actores) {
         this.actores = actores;
     }
 
     @Override
     public String toString() {
         return "Temporada [id=" + id + ", fechaProduccion=" + fechaProduccion + ", fechaEstrenoMundial="
-                + fechaEstrenoMundial + ", capitulos=" + Arrays.toString(capitulos) + ", personajes="
-                + Arrays.toString(personajes) + ", actores=" + Arrays.toString(actores) + "]";
+                + fechaEstrenoMundial + ", capitulos=" + capitulos + ", personajes=" + personajes + ", actores="
+                + actores + "]";
     }
 
 }
