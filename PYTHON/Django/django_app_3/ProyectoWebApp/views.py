@@ -1,18 +1,8 @@
 from django.shortcuts import render, HttpResponse
-from Servicios.models import Servicio
-
 
 # Create your views here.
 def home(request):
     return render(request, "ProyectoWebApp/home.html")
-
-
-def servicios(request):
-    servicios = (
-        Servicio.objects.all()
-    )  # importa todos los objetos que tengo dentro de la clase Servicio
-    return render(request, "ProyectoWebApp/servicios.html", {"servicios": servicios})
-
 
 def tienda(request):
     return render(request, "ProyectoWebApp/tienda.html")
