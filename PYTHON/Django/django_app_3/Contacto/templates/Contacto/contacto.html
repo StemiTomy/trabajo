@@ -2,14 +2,12 @@
 {% load static %}
 {% block content %}
 
-<div>
+<div class="contenedorFormulario">
     <form action="/your-name/" method="post" style="color: white;">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit">
     </form>
-    <!-- también se puede hacer así: -->
-    {{ form }}
 </div>
 
 {% endblock %}
