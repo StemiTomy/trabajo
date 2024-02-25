@@ -17,7 +17,7 @@
                     <p class="card-text">{{ producto.precio }}&nbsp;€</p>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="{% url 'carro:agregar_producto' producto.id %}" class="btn btn-success">Agregar al carro</a>
+                    <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-success">Agregar al carro</a>
                 </div>
             </div>
         </div>

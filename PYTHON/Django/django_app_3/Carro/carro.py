@@ -3,11 +3,8 @@ class Carro:
     def __init__(self, request):
         self.request = request
         self.session = request.session
-        carro = self.session.get("carro")
-        if not carro: # si no tiene carro, lo creamos
-            carro = self.session["carro"] = {}
-        else:
-            self.carro = carro
+        self.carro = self.session.get("carro", {})  # Inicializar carro como un diccionario vacío si no existe
+        self.guardar_carro()  # Guardar el carro después de inicializarlo
     
     def agregar(self, producto):
         if (str(producto.id) not in self.carro.keys()):
@@ -45,5 +42,5 @@ class Carro:
         self.guardar_carro()
     
     def limpiar_carro(self):
-        carro = self.session["carro"] = {}
+        self.carro = {}
         self.session.modified=True
