@@ -1,0 +1,13 @@
+{% extends "ProyectoWebApp/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="contenedorFormulario">
+    <form action="" method="post" style="color: white;">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+{% endblock %}
