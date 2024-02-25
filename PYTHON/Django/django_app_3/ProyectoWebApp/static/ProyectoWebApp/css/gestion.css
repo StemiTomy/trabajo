@@ -294,3 +294,7 @@ ul.errorlist{
   padding: 1em;
   width: 50%;
 }
+
+.text-muted {
+  color: white !important;
+}
