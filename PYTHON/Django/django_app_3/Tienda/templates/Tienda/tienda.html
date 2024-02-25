@@ -5,6 +5,7 @@
 <div class="container">
     <div style="float: right;">
         <p style="color: white;">Total: {{importe_total_carro}}&nbsp;€</p>
+        {% include "Carro/widget.html" %}
     </div>
     <div class="row">
     {% for producto in productos %}
@@ -16,7 +17,7 @@
                     <p class="card-text">{{ producto.precio }}&nbsp;€</p>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="#" class="btn btn-success">Agregar al carro</a>
+                    <a href="{% url 'carro:agregar_producto' producto.id %}" class="btn btn-success">Agregar al carro</a>
                 </div>
             </div>
         </div>
