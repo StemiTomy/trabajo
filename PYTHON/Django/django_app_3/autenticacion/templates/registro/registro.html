@@ -2,12 +2,10 @@
 {% load static %}
 {% block content %}
 
-<div class="contenedorFormulario">
-    <form action="" method="post" style="color: white;">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit">
-    </form>
-</div>
+<form action="" method="post" style="color: white;">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-success">Registrar</button>
+</form>
 
 {% endblock %}
