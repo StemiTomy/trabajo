@@ -1,4 +1,5 @@
 package JAVA.Prueba_Trabajo;
+
 import java.sql.Date; // suponemos que usaremos JDBC
 import java.util.ArrayList;
 
@@ -7,16 +8,14 @@ public class Temporada {
     private Date fechaProduccion;
     private Date fechaEstrenoMundial;
     private ArrayList<Capitulo> capitulos;
-    private ArrayList<Personaje> personajes;
     private ArrayList<Actor> actores;
-    
+
     public Temporada(int id, Date fechaProduccion, Date fechaEstrenoMundial, ArrayList<Capitulo> capitulos,
-            ArrayList<Personaje> personajes, ArrayList<Actor> actores) {
+            ArrayList<Actor> actores) {
         this.setId(id);
         this.setFechaProduccion(fechaProduccion);
         this.setFechaEstrenoMundial(fechaEstrenoMundial);
         this.setCapitulos(capitulos);
-        this.setPersonajes(personajes);
         this.setActores(actores);
     }
 
@@ -52,14 +51,6 @@ public class Temporada {
         this.capitulos = capitulos;
     }
 
-    public ArrayList<Personaje> getPersonajes() {
-        return personajes;
-    }
-
-    public void setPersonajes(ArrayList<Personaje> personajes) {
-        this.personajes = personajes;
-    }
-
     public ArrayList<Actor> getActores() {
         return actores;
     }
@@ -71,7 +62,7 @@ public class Temporada {
     @Override
     public String toString() {
         return "Temporada [id=" + id + ", fechaProduccion=" + fechaProduccion + ", fechaEstrenoMundial="
-                + fechaEstrenoMundial + ", capitulos=" + capitulos + ", personajes=" + personajes + ", actores="
+                + fechaEstrenoMundial + ", capitulos=" + capitulos + ", actores="
                 + actores + "]";
     }
 

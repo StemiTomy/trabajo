@@ -8,20 +8,20 @@ public class Serie {
     private String titulo;
     private int anoInicio;
     private String sinopsis;
-    private String[] generos = {"acción", "aventura", "animación", "comedia", "documental", "drama", "horror", "musical", "romance", "ciencia ficción"};
+    private String[] generos = { "acción", "aventura", "animación", "comedia", "documental", "drama", "horror",
+            "musical", "romance", "ciencia ficción" };
     private ArrayList<Temporada> temporadas;
-    private ArrayList<Personaje> personajes;
     private ArrayList<Actor> actores;
-    
-    public Serie(int id, String titulo, int anoInicio, String sinopsis, String[] generos, ArrayList<Temporada> temporadas,
-            ArrayList<Personaje> personajes, ArrayList<Actor> actores) {
+
+    public Serie(int id, String titulo, int anoInicio, String sinopsis, String[] generos,
+            ArrayList<Temporada> temporadas,
+            ArrayList<Actor> actores) {
         this.setId(id);
         this.setTitulo(titulo);
         this.setAnoInicio(anoInicio);
         this.setSinopsis(sinopsis);
         this.setGeneros(generos);
         this.setTemporadas(temporadas);
-        this.setPersonajes(personajes);
         this.setActores(actores);
     }
 
@@ -73,14 +73,6 @@ public class Serie {
         this.temporadas = temporadas;
     }
 
-    public ArrayList<Personaje> getPersonajes() {
-        return personajes;
-    }
-
-    public void setPersonajes(ArrayList<Personaje> personajes) {
-        this.personajes = personajes;
-    }
-
     public ArrayList<Actor> getActores() {
         return actores;
     }
@@ -92,10 +84,8 @@ public class Serie {
     @Override
     public String toString() {
         return "Serie [id=" + id + ", titulo=" + titulo + ", anoInicio=" + anoInicio + ", sinopsis=" + sinopsis
-                + ", generos=" + Arrays.toString(generos) + ", temporadas=" + temporadas + ", personajes=" + personajes
+                + ", generos=" + Arrays.toString(generos) + ", temporadas=" + temporadas
                 + ", actores=" + actores + "]";
     }
-
-    
 
 }

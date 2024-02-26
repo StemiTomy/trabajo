@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class Personaje {
     private int id;
-    private String nombrePersonaje;
+    private String nombre;
     private ArrayList<Actor> actores;
 
-    public Personaje(int id, String nombrePersonaje, ArrayList<Actor> actores) {
+    public Personaje(int id, String nombre, ArrayList<Actor> actores) {
         this.setId(id);
-        this.setNombrePersonaje(nombrePersonaje);
+        this.setNombre(nombre);
         this.setActores(actores);
     }
 
-    public Personaje(int id, String nombrePersonaje) {
+    public Personaje(int id, String nombre) {
         this.setId(id);
-        this.setNombrePersonaje(nombrePersonaje);
+        this.setNombre(nombre);
     }
 
     public int getId() {
@@ -26,12 +26,12 @@ public class Personaje {
         this.id = id;
     }
 
-    public String getNombrePersonaje() {
-        return nombrePersonaje;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombrePersonaje(String nombrePersonaje) {
-        this.nombrePersonaje = nombrePersonaje;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public ArrayList<Actor> getActores() {
@@ -44,7 +44,7 @@ public class Personaje {
 
     @Override
     public String toString() {
-        return "Personaje [id=" + id + ", nombrePersonaje=" + nombrePersonaje + ", actores=" + actores + "]";
+        return "Personaje [id=" + id + ", nombre=" + nombre + ", actores=" + actores + "]";
     }
 
 }

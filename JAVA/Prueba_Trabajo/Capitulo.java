@@ -7,15 +7,13 @@ public class Capitulo {
     private String titulo;
     private int duracionMins;
     private String sinopsis;
-    private ArrayList<Personaje> personajes;
     private ArrayList<Actor> actores;
 
-    public Capitulo(int id, String titulo, int duracionMins, String sinopsis, ArrayList<Personaje> personajes, ArrayList<Actor> actores) {
+    public Capitulo(int id, String titulo, int duracionMins, String sinopsis, ArrayList<Actor> actores) {
         this.setId(id);
         this.setTitulo(titulo);
         this.setDuracionMins(duracionMins);
         this.setSinopsis(sinopsis);
-        this.setPersonajes(personajes);
         this.setActores(actores);
     }
 
@@ -51,14 +49,6 @@ public class Capitulo {
         this.sinopsis = sinopsis;
     }
 
-    public ArrayList<Personaje> getPersonajes() {
-        return personajes;
-    }
-
-    public void setPersonajes(ArrayList<Personaje> personajes) {
-        this.personajes = personajes;
-    }
-
     public ArrayList<Actor> getActores() {
         return actores;
     }
@@ -70,7 +60,7 @@ public class Capitulo {
     @Override
     public String toString() {
         return "Capitulo [id=" + id + ", titulo=" + titulo + ", duracionMins=" + duracionMins + ", sinopsis=" + sinopsis
-                + ", personajes=" + personajes + ", actores=" + actores + "]";
+                + ", actores=" + actores + "]";
     }
 
 }
