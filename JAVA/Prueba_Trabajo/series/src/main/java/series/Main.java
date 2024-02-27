@@ -1,12 +1,11 @@
 package series;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 
     public class Main {
 
-    private static final Logger logger = Logger.getLogger(Main.class.getName());
+    //private static final Logger logger = Logger.getLogger(Main.class.getName());
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -17,6 +16,7 @@ import java.util.logging.Logger;
             // CARGA DATOS
             if (opcion == 1) {
                 Test1.cargarDatos();
+                scanner.close();
                 break;
             } else if (opcion == 2) {
                 System.out.println("Selecciona tipo de listado: \n1. Listar series, capítulos y personajes" + 
@@ -26,10 +26,12 @@ import java.util.logging.Logger;
                 if (opcion == 1) {
                     ArrayList<Serie> series = Test1.cargarDatos();
                     Test2.listarDatos(series);
+                    scanner.close();
                     break;
                 } else if (opcion == 2){
                     ArrayList<Serie> series = Test1.cargarDatos();
                     Test2.listarPersonajesOrdenAlfabetico(series);
+                    scanner.close();
                     break;
                 }
 

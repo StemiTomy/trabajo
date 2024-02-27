@@ -1,10 +1,10 @@
 
+package JAVA.Pruebas;
 /* Test: encontrar el ítem en el array, (Array, item)
 int[] ints = {-9, 14, 37, 102};
 System.out.println(EncontrarItemArray.exists(ints, 102)); // true
 System.out.println(EncontrarItemArray.exists(ints, 36)); // false
 */
-import java.util.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -44,6 +44,7 @@ class EncontrarItemArray {
                     int[] ints = { -9, 14, 37, 102 };
                     System.out.println(EncontrarItemArray.exists(ints, 102)); // true
                     System.out.println(EncontrarItemArray.exists(ints, 36)); // false
+                    scanner.close();
                     break;
                 case 1:
                     System.out.println("Ha seleccionado la opción 1.");

@@ -1,6 +1,4 @@
-import java.util.*;
-import java.io.*;
-import java.math.*;
+package JAVA.Pruebas;
 
 public class EncontrarNumMasCercanoA0 {
 
