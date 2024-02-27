@@ -3,14 +3,13 @@ package JAVA.Prueba_Trabajo.Swing.swing_1.src;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class App1_ConversorEuros implements ActionListener{
+public class App1_ConversorEuros {
     private JLabel etiqueta1;
     private JTextField campoDeTexto;
     private JButton boton;
@@ -43,34 +42,28 @@ public class App1_ConversorEuros implements ActionListener{
         ventana.setContentPane(panelDeContenido);
 
         // ASOCIACIÓN DEL CÓDIGO DE MANEJO DE EVENTOS
-        boton.addActionListener(this);
+        //boton.addActionListener(this);
+        ActionListener gestorEventos = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                convierte();
+            }
+        };
+        
+        boton.addActionListener(gestorEventos);
 
         // HACER VISIBLE LA VENTANA
         ventana.setVisible(true); 
     }
 
-    public void actionPerformed(Action e) {
-        // CÓDIGO DE MANEJO DE EVENTOS
+    public void convierte(){
         try {
-        double euros = Double.parseDouble(campoDeTexto.getText());
-        double pesetas = euros * 166.386;
-        etiqueta2.setText("Equivale a " + pesetas + " pesetas");
+            double euros =Double.parseDouble(campoDeTexto.getText());
+            double pesetas = euros * 166.386;
+            etiqueta2.setText("Equivale a " + pesetas + " pesetas");
         } catch (NumberFormatException e2) {
             etiqueta2.setText("En el campo de texto no hay un número");
         }
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // Código de manejo de eventos
-        try {
-            double euros = Double.parseDouble(campoDeTexto.getText());
-            double pesetas = euros * 166.386;
-            etiqueta2.setText("Equivale a " + pesetas + " pesetas");
-        } catch (NumberFormatException ex) {
-            etiqueta2.setText("En el campo de texto no hay un número");
-        }
-    }
+    } 
 
     public static void main(String[] args) {
         new App1_ConversorEuros();
