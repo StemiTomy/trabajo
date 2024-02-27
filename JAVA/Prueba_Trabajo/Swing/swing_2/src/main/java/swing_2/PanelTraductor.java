@@ -7,12 +7,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class PanelTraductor extends JPanel implements ActionListener { // 3. Damos eventos y acciones al panel
+public class PanelTraductor extends JPanel { // 3. Damos eventos y acciones al panel
     /*
-    cuál ha sido el componente que generó el evento.
-    Para ello se utiliza el método public Object getSource()
-    declarado en laclase java.util.EventObject, clase padre de todos los eventos.
-    */
+     * cuál ha sido el componente que generó el evento.
+     * Para ello se utiliza el método public Object getSource()
+     * declarado en laclase java.util.EventObject, clase padre de todos los eventos.
+     */
     private Traductor traductor;
 
     private JLabel etiqueta;
@@ -27,17 +27,28 @@ public class PanelTraductor extends JPanel implements ActionListener { // 3. Dam
         etiqueta = new JLabel("Pulsa el boton para traducir");
         campo = new JTextField(20);
         boton = new JButton("Traducir");
-        boton.addActionListener(this);
 
         botonCambioIdioma = new JButton("Invierte sentido traducción");
         etiquetaIdioma = new JLabel();
 
-        this.muestraSentidoTraduccion(); 
+        this.muestraSentidoTraduccion();
 
-        //Campo de texto asociado al gestor de eventos del boton
-        boton.addActionListener(this);
-        campo.addActionListener(this);
-        botonCambioIdioma.addActionListener(this);
+        // Campo de texto asociado al gestor de eventos del boton
+        boton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                traduce();
+            }
+        });
+        campo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                traduce();
+            }
+        });
+        botonCambioIdioma.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                invierteSentidoTraduccion();
+            }
+        });
 
         GestorEventosRollOver gestor = new GestorEventosRollOver();
 
@@ -45,7 +56,7 @@ public class PanelTraductor extends JPanel implements ActionListener { // 3. Dam
         campo.addMouseListener(gestor);
         boton.addMouseListener(gestor);
         botonCambioIdioma.addMouseListener(gestor);
-        etiquetaIdioma.addMouseListener(gestor); 
+        etiquetaIdioma.addMouseListener(gestor);
 
         this.add(campo);
         this.add(boton);
@@ -53,20 +64,19 @@ public class PanelTraductor extends JPanel implements ActionListener { // 3. Dam
         this.add(botonCambioIdioma);
         this.add(etiquetaIdioma);
     }
-    
-    public void actionPerformed(ActionEvent e) { // 4. Maneja el evento
-        if (e.getSource() == botonCambioIdioma) { // cogemos la información del evento
-            traductor.invierteIdioma();
-            this.muestraSentidoTraduccion();
-        } else {
-            etiqueta.setText(traductor.traducePalabra(
-            campo.getText()));
-        } 
+
+    protected void invierteSentidoTraduccion() {
+        traductor.invierteIdioma();
+        this.muestraSentidoTraduccion();
+    }
+
+    protected void traduce() {
         etiqueta.setText(traductor.traducePalabra(campo.getText()));
     }
 
     private void muestraSentidoTraduccion() {
-        etiquetaIdioma.setText(Traductor.getCadenaIdioma(traductor.getIdiomaOrigen())+ " - " + Traductor.getCadenaIdioma(traductor.getIdiomaDestino()));
+        etiquetaIdioma.setText(Traductor.getCadenaIdioma(traductor.getIdiomaOrigen()) + " - "
+                + Traductor.getCadenaIdioma(traductor.getIdiomaDestino()));
     }
 
 }
