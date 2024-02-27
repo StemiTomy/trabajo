@@ -1,12 +1,18 @@
 package swing_2;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class PanelTraductor extends JPanel implements ActionListener{ // 3. Damos eventos y acciones al panel
+import org.w3c.dom.events.MouseEvent;
+
+public class PanelTraductor extends JPanel implements ActionListener, MouseListener { // 3. Damos eventos y acciones al panel
     /*
     cuál ha sido el componente que generó el evento.
     Para ello se utiliza el método public Object getSource()
@@ -17,7 +23,8 @@ public class PanelTraductor extends JPanel implements ActionListener{ // 3. Damo
     private JTextField campo;
     private JButton boton;
     private JButton botonCambioIdioma;
-    private JLabel etiquetaIdioma; 
+    private JLabel etiquetaIdioma;
+    private Color colorAnterior;
 
     public PanelTraductor(Traductor traductor) { // 3. Damos eventos y acciones al panel
         this.traductor = traductor;
@@ -36,6 +43,12 @@ public class PanelTraductor extends JPanel implements ActionListener{ // 3. Damo
         boton.addActionListener(this);
         campo.addActionListener(this);
         botonCambioIdioma.addActionListener(this);
+
+        etiqueta.addMouseListener(this);
+        campo.addMouseListener(this);
+        boton.addMouseListener(this);
+        botonCambioIdioma.addMouseListener(this);
+        etiquetaIdioma.addMouseListener(this); 
 
         this.add(campo);
         this.add(boton);
@@ -58,4 +71,39 @@ public class PanelTraductor extends JPanel implements ActionListener{ // 3. Damo
     private void muestraSentidoTraduccion() {
         etiquetaIdioma.setText(Traductor.getCadenaIdioma(traductor.getIdiomaOrigen())+ " - " + Traductor.getCadenaIdioma(traductor.getIdiomaDestino()));
     }
+
+    @Override
+    public void mouseClicked(java.awt.event.MouseEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
+    }
+
+    @Override
+    public void mousePressed(java.awt.event.MouseEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
+    }
+
+    @Override
+    public void mouseReleased(java.awt.event.MouseEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mouseReleased'");
+    }
+
+    @Override
+    public void mouseEntered(java.awt.event.MouseEvent e) {
+        Component component = e.getComponent();
+        component.setForeground(colorAnterior);
+        //throw new UnsupportedOperationException("Unimplemented method 'mouseEntered'");
+    }
+
+    @Override
+    public void mouseExited(java.awt.event.MouseEvent e) {
+        // TODO Auto-generated method stub
+        Component component = e.getComponent();
+        colorAnterior = component.getForeground();
+        component.setForeground(java.awt.Color.BLUE);
+        //throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
+    }
+
 }
