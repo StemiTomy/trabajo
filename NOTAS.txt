@@ -1,4 +1,4 @@
 MODEL DAO, FACADE
 
-Usuario app stomoiaga, N+ste
-
+Usuario app mobile: stomoiaga, N+ste
+Usuario desktop: kyyu78
