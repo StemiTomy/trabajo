@@ -1,13 +1,19 @@
 package vapf;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButtonMenuItem;
 
-public class EjemploMenu1 extends JFrame {
+public class EjemploMenu1 extends JFrame implements
+        ActionListener, ItemListener {
     public static void main(String[] args) {
         new EjemploMenu1();
     }
@@ -40,6 +46,10 @@ public class EjemploMenu1 extends JFrame {
         bg.add(itemB);
         bg.add(itemC);
 
+        itemA.addItemListener(this);
+        itemB.addItemListener(this);
+        itemC.addItemListener(this);
+
         JMenu menu = new JMenu("Modo Edición");
         menu.add(itemA);
         menu.add(itemB);
@@ -54,6 +64,10 @@ public class EjemploMenu1 extends JFrame {
         JMenuItem itemAB = new JMenuItem("Clase");
         JMenuItem itemAC = new JMenuItem("Paquete");
 
+        itemAA.addActionListener(this);
+        itemAB.addActionListener(this);
+        itemAC.addActionListener(this);
+
         JMenu menuAA = new JMenu("Nuevo");
         menuAA.add(itemAA);
         menuAA.add(itemAB);
@@ -61,8 +75,11 @@ public class EjemploMenu1 extends JFrame {
 
         JMenuItem itemB = new JMenuItem("Abrir");
         JMenuItem itemC = new JMenuItem("Cerrar");
-
         JMenuItem itemAD = new JMenuItem("Salir");
+
+        itemB.addActionListener(this);
+        itemC.addActionListener(this);
+        itemAD.addActionListener(this);
 
         JMenu menu = new JMenu("Fichero");
         menu.add(menuAA);
@@ -72,6 +89,20 @@ public class EjemploMenu1 extends JFrame {
         menu.add(itemAD);
 
         return menu;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        JMenuItem item = (JMenuItem) e.getSource();
+        JOptionPane.showMessageDialog(this,
+                "Acción " + item.getText());
+    }
+
+    public void itemStateChanged(ItemEvent e) {
+        if (e.getStateChange() == ItemEvent.SELECTED) {
+            JMenuItem item = (JMenuItem) e.getSource();
+            JOptionPane.showMessageDialog(this,
+                    "Seleccionado " + item.getText());
+        }
     }
 
 }
