@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Test2 {
-    public static void listarDatos(ArrayList<Serie> series){
+    public static void listarDatos(ArrayList<SerieDTO> series){
         // por cada serie -> por cada temporada -> por cada capítulo -> por cada actor -> qué personaje/s interpreta
-        for (Serie serie : series) {
+        for (SerieDTO serie : series) {
             System.out.println("\n\nEn la serie " + serie.getTitulo() + ":");
             ArrayList<Temporada> temporadas = serie.getTemporadas();
             for (Temporada temporada : temporadas) {
@@ -28,9 +28,9 @@ public class Test2 {
         }
     }
 
-    public static void listarPersonajesOrdenAlfabetico(ArrayList<Serie> series){
+    public static void listarPersonajesOrdenAlfabetico(ArrayList<SerieDTO> series){
         // por cada serie, coge los nombres de los personajes, ordena alfabeticamente
-        for (Serie serie : series) {
+        for (SerieDTO serie : series) {
             ArrayList<Personaje> personajes = serie.getPersonajes();
 
             // Ordenar alfabéticamente los personajes

@@ -15,6 +15,18 @@ public class Temporada {
         this.fechaEstrenoMundial = fechaEstrenoMundial;
         this.capitulos = capitulos;
     }
+    public Temporada(Date fechaProduccion, Date fechaEstrenoMundial, ArrayList<Capitulo> capitulos) {
+        this.fechaProduccion = fechaProduccion;
+        this.fechaEstrenoMundial = fechaEstrenoMundial;
+        this.capitulos = capitulos;
+    }
+    public Temporada(Date fechaProduccion, Date fechaEstrenoMundial) {
+        this.fechaProduccion = fechaProduccion;
+        this.fechaEstrenoMundial = fechaEstrenoMundial;
+    }
+    public Temporada() {
+
+    }
 
     public int getId() {
         return id;

@@ -40,24 +40,24 @@ public class Test1 {
         return nombre.toString();
     }
 
-    public static ArrayList<Serie> cargarDatos() {
+    public static ArrayList<SerieDTO> cargarDatos() {
         // 0. Crear una lista de todos los géneros disponibles
         Generos[] generosDisponibles = Generos.values();
         Random random = new Random();
 
         // 1. Crear series
-        ArrayList<Serie> series = new ArrayList<>();
+        ArrayList<SerieDTO> series = new ArrayList<>();
         for (int i = 1; i <= 3; i++) { // 3 series
             // Seleccionar dos géneros aleatorios
             Generos genero1 = generosDisponibles[random.nextInt(generosDisponibles.length)];
             Generos genero2 = generosDisponibles[random.nextInt(generosDisponibles.length)];
-            Serie serie = new Serie(i, "Serie " + i, 2000 + i, "Sinopsis de la serie " + i, new ArrayList<Temporada>(), new ArrayList<Personaje>(), new ArrayList<Generos>());
+            SerieDTO serie = new SerieDTO(i, "Serie " + i, 2000 + i, "Sinopsis de la serie " + i, new ArrayList<Temporada>(), new ArrayList<Personaje>(), new ArrayList<Generos>());
             serie.getGeneros().add(genero1);
             serie.getGeneros().add(genero2);
             series.add(serie);
         }
         // 2. Crear temporadas
-        for (Serie serie : series) {
+        for (SerieDTO serie : series) {
             ArrayList<Temporada> temporadas = new ArrayList<Temporada>();
             for (int j = 1; j <= 5; j++) { // 5 temporadas para cada serie
                 Temporada temporada = new Temporada(j, null, null, new ArrayList<Capitulo>());
@@ -66,7 +66,7 @@ public class Test1 {
             serie.setTemporadas(temporadas);
         }
         // 3. Crear capítulos
-        for (Serie serie : series) {
+        for (SerieDTO serie : series) {
             for (Temporada temporada : serie.getTemporadas()) {
                 ArrayList<Capitulo> capitulos = new ArrayList<Capitulo>();
                 for (int k = 1; k <= 10; k++) { // 10 capítulos para cada temporada
@@ -101,7 +101,7 @@ public class Test1 {
         }
 
         // 7. Asignar personajes a capitulos
-        for (Serie serie : series) {
+        for (SerieDTO serie : series) {
             serie.setPersonajes(personajes);
             for (Temporada temporada : serie.getTemporadas()) {
                 ArrayList<Capitulo> capitulos = temporada.getCapitulos();
