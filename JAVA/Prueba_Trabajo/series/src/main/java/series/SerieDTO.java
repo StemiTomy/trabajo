@@ -9,9 +9,13 @@ public class SerieDTO {
     private String titulo;
     private Date anoInicio;
     private String sinopsis;
-    //private ArrayList<Temporada> temporadas;
+    private ArrayList<TemporadaDTO> temporadas;
     //private ArrayList<Personaje> personajes;
     //private List<Generos> generos;
+    
+    public SerieDTO() {
+        //TODO Auto-generated constructor stub
+    }
 
     public SerieDTO(String titulo, Date fechaInicio, String sinopsis) {
         this.titulo = titulo;
@@ -19,9 +23,13 @@ public class SerieDTO {
         this.sinopsis = sinopsis;
     }
 
-    public SerieDTO() {
-        //TODO Auto-generated constructor stub
+    public SerieDTO(String titulo, Date anoInicio, String sinopsis, ArrayList<TemporadaDTO> temporadas) {
+        this.titulo = titulo;
+        this.anoInicio = anoInicio;
+        this.sinopsis = sinopsis;
+        this.temporadas = temporadas;
     }
+
 
     public int getId() {
         return id;
@@ -48,11 +56,18 @@ public class SerieDTO {
         this.sinopsis = sinopsis;
     }
 
+    public ArrayList<TemporadaDTO> getTemporadas() {
+        return temporadas;
+    }
+
+    public void setTemporadas(ArrayList<TemporadaDTO> temporadas) {
+        this.temporadas = temporadas;
+    }
+
     @Override
     public String toString() {
         return "SerieDTO [id=" + id + ", titulo=" + titulo + ", anoInicio=" + anoInicio + ", sinopsis=" + sinopsis
-                + "]";
+                + ", temporadas=" + temporadas + "]";
     }
-
     
 }

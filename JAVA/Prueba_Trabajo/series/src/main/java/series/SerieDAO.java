@@ -11,17 +11,14 @@ public class SerieDAO {
     private PreparedStatement ptmt = null;
     private ResultSet resultSet = null;
 
-    protected String namefile="com.vapf.bdjava.dao:calidadesDAO";
+    //protected String namefile="com.vapf.bdjava.dao:calidadesDAO";
 
     protected String SQL_INSERT= "INSERT INTO serie (titulo, anyoInicio, sinopsis) VALUES ( ?, ?, ? )";
     protected String SQL_UPDATE ="UPDATE serie SET  titulo = ?, anyoInicio = ?, sinopsis = ? WHERE (id = ?)";
-    // protected String SQL_DELETE = "DELETE FROM calidades WHERE (CodigoCalidad = ? )";
+    protected String SQL_DELETE = "DELETE FROM serie WHERE (id = ? )";
     protected String SQL_ALL = "SELECT * FROM serie";
-    // protected String SQL_BYKEY = "SELECT * FROM calidades WHERE (CodigoCalidad = ? )";
 
-    public SerieDAO () {
-
-    }
+    public SerieDAO () {}
 
     private Connection getConnection() throws SQLException {
         Connection conn = ConnectorJDBC.getInstance().getConnection();
@@ -82,6 +79,13 @@ public class SerieDAO {
                 dto.setTitulo(resultSet.getString("titulo"));
                 dto.setAnoInicio(resultSet.getDate("anyoInicio"));
                 dto.setSinopsis(resultSet.getString("sinopsis"));
+
+                // Aquí recuperas las temporadas asociadas a la serie
+                int serieId = resultSet.getInt("id"); // Obtener el ID de la serie
+                TemporadaDAO temporadaDAO = new TemporadaDAO();
+                ArrayList<TemporadaDTO> temporadas = temporadaDAO.getTemporadasBySerieId(serieId);
+                dto.setTemporadas(temporadas);
+
                 results.add(dto);
             }
         } catch (SQLException e) {
@@ -153,4 +157,44 @@ public class SerieDAO {
 
         return success;
     }
+
+    public int delete(SerieDTO serieObject){
+        int success = 0;
+        try {
+            connection = getConnection();
+            ptmt = connection.prepareStatement(SQL_DELETE);
+            ptmt.setInt(1, serieObject.getId());
+            ptmt.executeUpdate();
+            success = 1;
+        } catch (SQLException e) {
+            success = 0;
+            System.out.println("Mensaje de error: " + e.getMessage());
+            System.out.println("Código de estado SQL: " + e.getSQLState());
+            System.out.println("Código de error: " + e.getErrorCode());
+        } catch (Exception e) {
+            success = 0;
+            // TODO: handle exception
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (ptmt != null) {
+                    ptmt.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                success = 0;
+                // TODO: handle exception
+            } catch (Exception e) {
+                success = 0;
+                // TODO: handle exception
+            }
+        }
+
+        return success;
+    }
+
 }

@@ -9,8 +9,8 @@ public class Test2 {
         // por cada serie -> por cada temporada -> por cada capítulo -> por cada actor -> qué personaje/s interpreta
         for (SerieDTO serie : series) {
             System.out.println("\n\nEn la serie " + serie.getTitulo() + ":");
-            ArrayList<Temporada> temporadas = serie.getTemporadas();
-            for (Temporada temporada : temporadas) {
+            ArrayList<TemporadaDTO> temporadas = serie.getTemporadas();
+            for (TemporadaDTO temporada : temporadas) {
                 System.out.print("\n\tEn la temporada " + temporada.getId() + ":");
                 ArrayList<Capitulo> capitulos = temporada.getCapitulos();
                 for (Capitulo capitulo : capitulos) {

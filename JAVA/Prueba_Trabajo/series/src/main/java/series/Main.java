@@ -39,7 +39,7 @@ import java.util.Scanner;
                 }
 
             } else if (opcion == 3) {
-                System.out.println("Selecciona tipo de listado: \n1. Insert nueva serie.\n2. Listar series.\n3. Update serie.\n4. Salir");
+                System.out.println("Selecciona tipo de listado: \n1. Insert nueva serie.\n2. Listar series.\n3. Update serie.\n4. Eliminar serie.\n5. Salir");
                 opcion = scanner.nextInt();
 
                 SerieDAO serieDAO = new SerieDAO();
@@ -69,21 +69,44 @@ import java.util.Scanner;
                     }
                     System.out.println("Listado de series mostrado correctamente.\n");
                 } else if (opcion == 3) {
-                    System.out.println("Selecciona el id de la serie:");
+                    System.out.println("Selecciona el id de la serie a modificar:");
                     ArrayList<SerieDTO> series = serieDAO.getSeries(); // esto retorna un array de series
                     for (SerieDTO serie : series) {
-                        System.out.println("Serie: " + serie.toString());
+                        System.out.println(serie.toString());
                     }
                     int serieID = scanner.nextInt();
-                    SerieDTO serieDTO = series.get(serieID);
-                    serieDTO.setSinopsis("La sinopsis nueva");
-                    int resultado = serieDAO.update(serieDTO);
-                    if (resultado == 0) {
-                        System.out.println("Error");
-                        break;
+                    for (SerieDTO serie : series) {
+                        if (serie.getId() == serieID) {
+                            SerieDTO serieDTO = serie;
+                            serieDTO.setSinopsis("La sinopsis nueva");
+                            int resultado = serieDAO.update(serieDTO);
+                            if (resultado == 0) {
+                                System.out.println("Error");
+                                break;
+                            }
+                            System.out.println("Serie modificada correctamente: " + serieDTO.toString() + "\n");
+                        }
                     }
-                    System.out.println("Serie modificada correctamente: " + serieDTO.toString() + "\n");
                 } else if (opcion == 4) {
+                    System.out.println("Selecciona el id de la serie a eliminar:");
+                    ArrayList<SerieDTO> series = serieDAO.getSeries(); // esto retorna un array de series
+                    for (SerieDTO serie : series) {
+                        System.out.println(serie.toString());
+                    }
+                    int serieID = scanner.nextInt();
+                    for (SerieDTO serie : series) {
+                        if (serie.getId() == serieID) {
+                            SerieDTO serieDTO = serie;
+                            serieDTO.setSinopsis("La sinopsis nueva");
+                            int resultado = serieDAO.delete(serieDTO);
+                            if (resultado == 0) {
+                                System.out.println("Error");
+                                break;
+                            }
+                            System.out.println("Serie eliminada.\n");
+                        }
+                    }
+                } else if (opcion == 5) {
                     break;
                 }
             } else if (opcion == 4) {

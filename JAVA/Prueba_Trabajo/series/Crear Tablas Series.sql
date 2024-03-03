@@ -27,7 +27,7 @@ CREATE TABLE serie_genero (
     FOREIGN KEY (id_genero) REFERENCES genero(id)
 );
 CREATE TABLE temporada (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     fechaProduccion DATE NOT NULL,
     fechaEstrenoMundial DATE,
     serie_id INT,
