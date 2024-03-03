@@ -34,8 +34,8 @@ CREATE TABLE temporada (
     FOREIGN KEY (serie_id) REFERENCES serie(id) ON DELETE CASCADE
 );
 CREATE TABLE capitulo (
-    id INT PRIMARY KEY,
-    titulo VARCHAR(50) NOT NULL UNIQUE,
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    titulo VARCHAR(50) NOT NULL,
     duracionMins INT,
     sinopsis TEXT NOT NULL,
     temporada_id INT NOT NULL,

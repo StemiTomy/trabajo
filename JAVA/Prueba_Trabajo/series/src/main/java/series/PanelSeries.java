@@ -55,6 +55,7 @@ public class PanelSeries extends JPanel {
         });
 
         // Agregar un TreeSelectionListener al JTree para detectar cambios en la selección del árbol
+        
         tree.addTreeSelectionListener(new TreeSelectionListener() {
             @Override
             public void valueChanged(TreeSelectionEvent e) {
@@ -64,14 +65,15 @@ public class PanelSeries extends JPanel {
                 // Habilitar o deshabilitar el botón de borrar según si hay un nodo seleccionado o no
                 if (selectedPath != null && selectedPath.getLastPathComponent() != tree.getModel().getRoot()) {
                     // Obtener el último componente del camino, que es el nodo seleccionado
-                    DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) selectedPath.getLastPathComponent();
+                    //DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) selectedPath.getLastPathComponent();
                     botonBorrar.setEnabled(true);
-                    mostrarTemporadas((String) selectedNode.getUserObject()); // TODO: lo coge como nulo y en parte tiene razón
+                    //mostrarTemporadas((String) selectedNode.getUserObject()); // TODO: lo coge como nulo y en parte tiene razón
                 } else {
                     botonBorrar.setEnabled(false);
                 }
             }
         });
+        
 
         // Deshabilitar el botón de borrar inicialmente
         botonBorrar.setEnabled(false);
@@ -98,6 +100,16 @@ public class PanelSeries extends JPanel {
         // Agregar las series como nodos secundarios al nodo raíz
         for (SerieDTO serie : series) {
             DefaultMutableTreeNode serieNode = new DefaultMutableTreeNode(serie.getTitulo());
+            ArrayList<TemporadaDTO> temporadas = serie.getTemporadas();
+            for (TemporadaDTO temporada : temporadas) {
+                DefaultMutableTreeNode temporadaNode = new DefaultMutableTreeNode("Temporada " + temporada.getId());
+                ArrayList<CapituloDTO> capitulos = temporada.getCapitulos();
+                for (CapituloDTO capitulo : capitulos) {
+                    DefaultMutableTreeNode capituloNode = new DefaultMutableTreeNode("Capítulo " + capitulo.getId());
+                    temporadaNode.add(capituloNode);
+                }
+                serieNode.add(temporadaNode);
+            }
             root.add(serieNode);
         }
 
@@ -153,11 +165,69 @@ public class PanelSeries extends JPanel {
                     DefaultMutableTreeNode temporadaNode = new DefaultMutableTreeNode("Temporada " + temporada.getId());
                     root.add(temporadaNode);
                 }
+
+                // Agregar un TreeSelectionListener al JTree para detectar cambios en la selección del árbol
+                /*
+                temporadasTree.addTreeSelectionListener(new TreeSelectionListener() {
+                    @Override
+                    public void valueChanged(TreeSelectionEvent e) {
+                        // Obtener el camino de selección actual
+                        TreePath selectedPath = temporadasTree.getSelectionPath();
+
+                        // Habilitar o deshabilitar el botón de borrar según si hay un nodo seleccionado o no
+                        if (selectedPath != null && selectedPath.getLastPathComponent() != tree.getModel().getRoot()) {
+                            // Obtener el último componente del camino, que es el nodo seleccionado
+                            DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) selectedPath.getLastPathComponent();
+                            System.out.println("El item seleccionado es un: " + selectedNode.getUserObject().getClass());
+                            String texto = selectedNode.getUserObject().toString();
+
+                            int indiceEspacio = texto.indexOf(' '); // Encontrar el índice del primer espacio
+                            String numeroStr = texto.substring(indiceEspacio + 1); // Obtener la parte después del espacio
+                            int temporada_id = Integer.parseInt(numeroStr); // Convertir a int
+
+                            mostrarCapitulos(tituloSerie, temporada_id); // TODO: "Temporada 2"
+                        }
+                    }
+                });
+                */
                 
                 // Mostrar el nuevo árbol de temporadas en un diálogo o en otra parte de la interfaz
                 JOptionPane.showMessageDialog(null, new JScrollPane(temporadasTree), "Temporadas de " + tituloSerie, JOptionPane.PLAIN_MESSAGE);
                 
                 break; // Salir del bucle una vez que se encuentre la serie correspondiente
+            }
+        }
+    }
+
+    private void mostrarCapitulos(String tituloSerie, int idTemporada) {
+        for (SerieDTO serie : series) {
+            if (serie.getTitulo().equals(tituloSerie)) {
+                ArrayList<TemporadaDTO> temporadas = serie.getTemporadas();
+                for (TemporadaDTO temporada : temporadas) {
+                    if (temporada.getId() == idTemporada) {
+                        // Obtener las capitulos de la temporada
+                        ArrayList<CapituloDTO> capitulos = temporada.getCapitulos();
+
+                        if (capitulos != null) {
+                            // Crear un nuevo árbol para mostrar los capítulos
+                            JTree capitulosTree = new JTree();
+                            DefaultMutableTreeNode root = new DefaultMutableTreeNode("Capitulos de " + tituloSerie + " de la temporada " + idTemporada);
+                            DefaultTreeModel treeModel = new DefaultTreeModel(root);
+                            capitulosTree.setModel(treeModel);
+
+                            // Agregar nodos para cada capitulo al árbol
+                            for (CapituloDTO capitulo : capitulos) {
+                                DefaultMutableTreeNode capituloNode = new DefaultMutableTreeNode("Capítulo " + capitulo.getId());
+                                root.add(capituloNode);
+                            }
+                            
+                            // Mostrar el nuevo árbol de temporadas en un diálogo o en otra parte de la interfaz
+                            JOptionPane.showMessageDialog(null, new JScrollPane(capitulosTree), "Capitulos de " + tituloSerie, JOptionPane.PLAIN_MESSAGE);
+                        }
+                        break; // Salir del bucle una vez que se encuentre la temporada correspondiente
+                    }
+                }
+
             }
         }
     }

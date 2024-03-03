@@ -7,7 +7,7 @@ public class TemporadaDTO {
     private int id;
     private Date fechaProduccion;
     private Date fechaEstrenoMundial;
-    //private ArrayList<Capitulo> capitulos;
+    private ArrayList<CapituloDTO> capitulos;
 
     public TemporadaDTO(Date fechaProduccion, Date fechaEstrenoMundial) {
         this.fechaProduccion = fechaProduccion;
@@ -35,11 +35,18 @@ public class TemporadaDTO {
     public void setFechaEstrenoMundial(Date fechaEstrenoMundial) {
         this.fechaEstrenoMundial = fechaEstrenoMundial;
     }
+    
+    public ArrayList<CapituloDTO> getCapitulos() {
+        return capitulos;
+    }
+    public void setCapitulos(ArrayList<CapituloDTO> capitulos) {
+        this.capitulos = capitulos;
+    }
 
     @Override
     public String toString() {
-        return "Temporada [id=" + id + ", fechaProduccion=" + fechaProduccion + ", fechaEstrenoMundial="
-                + fechaEstrenoMundial + "]";
+        return "TemporadaDTO [id=" + id + ", fechaProduccion=" + fechaProduccion + ", fechaEstrenoMundial="
+                + fechaEstrenoMundial + ", capitulos=" + capitulos + "]";
     }
 
 }

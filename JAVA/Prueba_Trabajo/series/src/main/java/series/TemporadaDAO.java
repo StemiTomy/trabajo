@@ -73,7 +73,6 @@ public class TemporadaDAO {
             ptmt = connection.prepareStatement(SQL_SELECT_ID);
             ptmt.setInt(1, serieId); // ejecutar el id de la sql
             resultSet = ptmt.executeQuery();
-            System.out.println("Dentrod e temporadaDAO: el valor de resulteSet es de " + resultSet.toString());
             while (resultSet.next()) {
                 TemporadaDTO dto = new TemporadaDTO();
                 dto.setId(resultSet.getInt("id"));
@@ -81,7 +80,6 @@ public class TemporadaDAO {
                 dto.setFechaEstrenoMundial(resultSet.getDate("fechaEstrenoMundial"));
                 results.add(dto);
             }
-            ptmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Mensaje de error: " + e.getMessage());
             System.out.println("Código de estado SQL: " + e.getSQLState());

@@ -2,14 +2,18 @@ package series;
 
 import java.util.ArrayList;
 
-public class Capitulo {
+public class CapituloDTO {
     private int id;
     private String titulo;
     private int duracionMins;
     private String sinopsis;
     private ArrayList<Personaje> personajes;
 
-    public Capitulo(int id, String titulo, int duracionMins, String sinopsis, ArrayList<Personaje> personajes) {
+    public CapituloDTO () {
+        
+    }
+
+    public CapituloDTO(int id, String titulo, int duracionMins, String sinopsis, ArrayList<Personaje> personajes) {
         this.id = id;
         this.titulo = titulo;
         this.duracionMins = duracionMins;

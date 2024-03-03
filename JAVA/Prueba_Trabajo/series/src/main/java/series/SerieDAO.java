@@ -72,7 +72,6 @@ public class SerieDAO {
             connection = getConnection();
             ptmt = connection.prepareStatement(SQL_ALL);
             resultSet = ptmt.executeQuery();
-            System.out.println("Dentrod e serieDAO: el valor de resulteSet es de " + resultSet.toString());
             while (resultSet.next()) {
                 SerieDTO dto = new SerieDTO();
                 dto.setId(resultSet.getInt("id"));
@@ -84,6 +83,13 @@ public class SerieDAO {
                 int serieId = resultSet.getInt("id"); // Obtener el ID de la serie
                 TemporadaDAO temporadaDAO = new TemporadaDAO();
                 ArrayList<TemporadaDTO> temporadas = temporadaDAO.getTemporadasBySerieId(serieId);
+
+                // Para cada temporada, obtener los capítulos asociados
+                for (TemporadaDTO temporada : temporadas) {
+                    CapituloDAO capituloDAO = new CapituloDAO();
+                    ArrayList<CapituloDTO> capitulos = capituloDAO.getCapitulosByTemporadaId(temporada.getId());
+                    temporada.setCapitulos(capitulos);
+                }
                 dto.setTemporadas(temporadas);
 
                 results.add(dto);
